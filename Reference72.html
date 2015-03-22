@@ -1,0 +1,1465 @@
+
+<html lang="ja-JP">
+    <head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <title>Dxlib72 の Reference72</title>
+    </head>
+    <body bgcolor="#ffffff" text="#000000" link="#0033CC" vlink="#800040">
+    <table align="center" width="1024"  cellspacing="0" cellpadding="0" >
+        <tr><td align="center" colspan="2">
+        <center>
+        <font size="5"><b>Dxlib72 関数リファレンスページ<br></b></font>
+        <hr></center>
+        </td></tr>
+
+        <tr><td align="left" colspan="2">
+        <font size="3"><b>
+        <br>
+        このページではAndroid用DxライブラリであるDxlib72の主な関数の説明と簡単な
+        サンプルプログラムを載せています。<br><br>
+        @から始まる関数はAndroid用に新規に追加した関数です。<br>
+        殆どの関数がDxlibと同じ感覚で利用できます。<br>
+        <br>
+        ここでは関数の具体的な引数や返り値などを公開します。<br>
+        実際の使用サンプルはPDFのスライドをご確認ください。<br>
+        <br>
+        現在のDxlib72 のバージョンは 0.72　、関数の数は72個、コードネームは2月に完成したので　Kisaragi　です。
+        <br><br><br>
+        </b></font>
+        </td></tr>
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>使用必須関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.001  <b><a href="#R1N1">@Awake72</a></b></td><td>初期処理を行う</td></tr>
+        <tr><td valign="top">No.002  <b><a href="#R1N2">@Loop72</a></b></td><td>ゲームループを行う</td></tr>
+        <tr><td valign="top">No.003  <b><a href="#R1N3">@Define72</a></b></td><td>様々な定義を変更する<br><br><br></td></tr>
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>図形描画関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.004  <b><a href="#R2N1">DrawLine</a></b></td><td>　線を描画する</td></tr>
+        <tr><td valign="top">No.005  <b><a href="#R2N2">DrawBox</a></b></td><td>　四角を描画する</td></tr>
+        <tr><td valign="top">No.006  <b><a href="#R2N3">DrawCircle</a></b></td><td>　円の描画する</td></tr>
+        <tr><td valign="top">No.007  <b><a href="#R2N4">DrawPixel</a></b></td><td>　点を描画するする<br><br><br></td></tr>
+        
+        
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>グラフィック系の関数</b><br><br></font>
+        </td></tr>
+        <tr><td valign="top">No.008  <b><a href="#R3N1">LoadGraphScreen</a></b></td><td>　画像ファイルを読みこんで画面に表示する</td></tr>
+        <tr><td valign="top">No.009  <b><a href="#R3N2">LoadGraph</a></b></td><td>　画像ファイルのメモリへの読みこみ</td></tr>
+        <tr><td valign="top">No.010  <b><a href="#R3N3">@LoadGraph</a></b></td><td>　画像ファイルのメモリへの読みこみ２</td></tr>
+        <tr><td valign="top">No.011  <b><a href="#R3N4">DrawGraph</a></b></td><td>　メモリに読みこんだグラフィックの描画</td></tr>
+        <tr><td valign="top">No.012  <b><a href="#R3N5">DrawTurnGraph</a></b></td><td>　メモリに読みこんだグラフィックのＬＲ反転描画</td></tr>
+        <tr><td valign="top">No.013  <b><a href="#R3N6">DrawExtendGraph</a></b></td><td>　メモリに読みこんだグラフィックの拡大縮小描画</td></tr>
+        <tr><td valign="top">No.014  <b><a href="#R3N7">DrawRotaGraph</a></b></td><td>　メモリに読みこんだグラフィックの回転描画</td></tr>
+        <tr><td valign="top">No.015  <b><a href="#R3N8">DrawRotaGraph2</a></b></td><td>　メモリに読みこんだグラフィックの回転描画(回転中心指定あり)</td></tr>
+        <tr><td valign="top">No.016  <b><a href="#R3N9">DrawRotaGraph3</a></b></td><td>　メモリに読みこんだグラフィックの回転描画(回転中心指定あり、縦横拡大率別指定)</td></tr>
+        <tr><td valign="top">No.017  <b><a href="#R3N10">@GetGraphWidth</a></b></td><td>　グラフィックの横のサイズを得る</td></tr>
+        <tr><td valign="top">No.018  <b><a href="#R3N11">@GetGraphHeight</a></b></td><td>　グラフィックの縦のサイズを得る</td></tr>
+        <tr><td valign="top">No.019  <b><a href="#R3N12">InitGraph</a></b></td><td>　読みこんだグラフィックデータをすべて削除する</td></tr>
+        <tr><td valign="top">No.020  <b><a href="#R3N13">DeleteGraph</a></b></td><td>　指定のグラフィックをメモリ上から削除する</td></tr>
+        <tr><td valign="top">No.021  <b><a href="#R3N14">SetDrawBlendMode</a></b></td><td>　描画の際のブレンドモードをセットする<br><br><br></td></tr>
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>ドット単位で画像にアクセスしたい関係</b><br><br></font>
+        </td></tr>
+        <tr><td valign="top">No.022  <b><a href="#R4N1">@Color72</a></b></td><td>　GetPixelSoftImageで使う色のクラス</td></tr>
+        <tr><td valign="top">No.023  <b><a href="#R4N2">@GetPixel</a></b></td><td>　イメージの指定座標の色をJavaのint型のColorで取得する</td></tr>
+        <tr><td valign="top">No.024  <b><a href="#R4N3">GetPixelSoftImage</a></b></td><td>　イメージの指定座標の色をColor72を用いて取得する(各色要素は０～２５５)</td></tr>
+        <tr><td valign="top">No.025  <b><a href="#R4N4">@SetPixel</a></b></td><td>　ＣＰＵで扱うイメージの指定座標に指定の色を置く(Javaのint型のColorで)</td></tr>
+        <tr><td valign="top">No.026  <b><a href="#R4N5">SetPixelSoftImage</a></b></td><td>　ＣＰＵで扱うイメージの指定座標に色を置く(Color72を用いて)<br><br><br></td></tr>
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>文字描画関係関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.027  <b><a href="#R5N1">DrawString / DrawFormatString</a></b></td><td>　文字列を描画する</td></tr>
+        <tr><td valign="top">No.028  <b><a href="#R5N2">GetDrawFormatStringWidth</a></b></td><td>　DrawString で描画される文字列の幅(ドット単位)を得る</td></tr>
+        <tr><td valign="top">No.029  <b><a href="#R5N3">SetFontSize</a></b></td><td>　描画する文字列のサイズをセットする</td></tr>
+        <tr><td valign="top">No.030  <b><a href="#R5N4">SetFontThickness</a></b></td><td>　描画する文字列の文字の太さをセットする</td></tr>
+        <tr><td valign="top">No.031  <b><a href="#R5N5">SetFontAntiAlias</a></b></td><td>　描画する文字列のアンチエイリアスをセットする</td></tr>
+        <tr><td valign="top">No.032  <b><a href="#R5N6">printfDx</a></b></td><td>　簡易文字列描画</td></tr>
+        <tr><td valign="top">No.033  <b><a href="#R5N7">clsDx</a></b></td><td>　簡易画面出力履歴をクリアする<br><br><br></td></tr>
+
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>動画関係関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.034  <b><a href="#R6N1">PlayMovie</a></b></td><td>　動画ファイルの再生<br><br><br></td></tr>
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>入力関係の関数</b><br><br></font>
+        </td></tr>
+        <tr><td valign="top">No.035  <b><a href="#R7N1">@GetTouchPointX / GetMousePointX</a></b></td><td>　タッチした位置のX座標を取得する</td></tr>
+        <tr><td valign="top">No.036  <b><a href="#R7N2">@GetTouchPointY / GetMousePointY</a></b></td><td>　タッチした位置のY座標を取得する</td></tr>
+        <tr><td valign="top">No.037  <b><a href="#R7N3">@Touched</a></b></td><td>　タッチしているかを取得する</td></tr>
+        <tr><td valign="top">No.038  <b><a href="#R7N4">CheckHitKey </a></b></td><td>　各PCでのキーっぽい操作を取得する(互換性のために残している)</td></tr>
+        <tr><td valign="top">No.039  <b><a href="#R7N5">@CheckGesture</a></b></td><td>　タッチのジェスチャー入力を取得する<br><br><br></td></tr>
+                        
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>音利用関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.040  <b><a href="#R8N1">LoadSoundMem</a></b></td><td>　音ファイルをメモリに読みこむ</td></tr>
+        <tr><td valign="top">No.041  <b><a href="#R8N2">@LoadSoundMem</a></b></td><td>　音ファイルをメモリに読みこむ</td></tr>
+        <tr><td valign="top">No.042  <b><a href="#R8N3">PlaySoundMem</a></b></td><td>　メモリに読みこんだ音データを再生する</td></tr>
+        <tr><td valign="top">No.043  <b><a href="#R8N4">CheckSoundMem</a></b></td><td>　メモリに読みこんだ音データが再生中か調べる</td></tr>
+        <tr><td valign="top">No.044  <b><a href="#R8N5">StopSoundMem</a></b></td><td>　メモリに読み込んだ音データの再生を止める</td></tr>
+        <tr><td valign="top">No.045  <b><a href="#R8N6">DeleteSoundMem</a></b></td><td>　メモリに読みこんだ音データを削除する</td></tr>
+        <tr><td valign="top">No.046  <b><a href="#R8N7">InitSoundMem</a></b></td><td>　メモリに読みこんだ音データをすべて消去する</td></tr>
+        <tr><td valign="top">No.047  <b><a href="#R8N8">@ALLStopSoundMem</a></b></td><td>　メモリに読みこんだ音データをすべて停止する</td></tr>
+        <tr><td valign="top">No.048  <b><a href="#R8N9">@AllResumeSoundMem</a></b></td><td>　メモリに読みこんだ音データ停止中の音をすべて再生する<br><br><br></td></tr>
+
+
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>時間関係の関数</b><br><br></font>
+        </td></tr>
+
+
+        <tr><td valign="top">No.049  <b><a href="#R9N1">GetNowCount</a></b></td><td>　ミリ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+        <tr><td valign="top">No.050  <b><a href="#R9N2">GetNowHiPerformanceCount</a></b></td><td>　マイクロ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+        <tr><td valign="top">No.051  <b><a href="#R9N3">@GetNowSuperHiPerformanceCount</a></b></td><td>　ナノ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+        <tr><td valign="top">No.052  <b><a href="#R9N4">DATEDATA</a></b></td><td>　GetDateTimeで使用するクラス</td></tr>
+        <tr><td valign="top">No.053  <b><a href="#R9N5">GetDateTime</a></b></td><td>　現在時刻を取得する<br><br><br></td></tr>
+
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>ファイル読み書き関係</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.054  <b><a href="#R10N1">FileRead_open</a></b></td><td>　ファイルを開く</td></tr>
+        <tr><td valign="top">No.055  <b><a href="#R10N2">FileRead_size</a></b></td><td>　ファイルのサイズを得る</td></tr>
+        <tr><td valign="top">No.056  <b><a href="#R10N3">FileRead_close</a></b></td><td>　ファイルを閉じる</td></tr>
+        <tr><td valign="top">No.057  <b><a href="#R10N4">FileRead_eof</a></b></td><td>　ファイルの終端かどうかを調べる</td></tr>
+        <tr><td valign="top">No.058 <b><a href="#R10N5">FileRead_gets</a></b></td><td>　ファイルから一行読み出す</td></tr>
+        <tr><td valign="top">No.059 <b><a href="#R10N6">FileRead_getc</a></b></td><td>　ファイルから一文字読み出す</td></tr>
+        <tr><td valign="top">No.060  <b><a href="#R10N7">@DataFileRead_open</a></b></td><td>　読み書き可能なファイルを読み込みモードで開く</td></tr>
+        <tr><td valign="top">No.061  <b><a href="#R10N8">@DataFileWrite_open</a></b></td><td>　読み書き可能なファイルを書き込みモードで開く</td></tr>
+        <tr><td valign="top">No.062  <b><a href="#R10N9">@DataFileWrite_sets</a></b></td><td>　読み書き可能なファイルに一行分書き込む</td></tr>
+        <tr><td valign="top">No.063  <b><a href="#R10N10">@DataFileWrite_setc</a></b></td><td>　読み書き可能なファイルに一文字書き込む</td></tr>
+        <tr><td valign="top">No.064  <b><a href="#R10N11">@DataFileWrite_close</a></b></td><td>　読み書き可能な書き込みモードのファイルを閉じる</td></tr>
+        <tr><td valign="top">No.065  <b><a href="#R10N12">@DataFileRead</a></b></td><td>　読み書き可能なファイルからすべて読み出す</td></tr>
+		<tr><td valign="top">No.066  <b><a href="#R10N13">@DataFileWrite</a></b></td><td>　読み書き可能なファイルからすべて書き出す<br><br><br></td></tr>
+
+
+
+        <tr><td colspan="2">
+            <font size="3" color="#005500"><b>その他の関数</b><br><br></font>
+        </td></tr>
+
+        <tr><td valign="top">No.067  <b><a href="#R11N1">SetBackgroundColor</a></b></td><td>　画面の背景色を設定する</td></tr>
+        <tr><td valign="top">No.068  <b><a href="#R11N2">GetColor</a></b></td><td>　色コードを取得する</td></tr>
+        <tr><td valign="top">No.069  <b><a href="#R11N3">GetRand</a></b></td><td>　乱数を取得する</td></tr>
+        <tr><td valign="top">No.070  <b><a href="#R11N4">SRand</a></b></td><td>　乱数の初期値を設定する</td></tr>
+        <tr><td valign="top">No.071  <b><a href="#R11N5">@CallToast</a></b></td><td>　トースト(簡単なポップアップ)を出す</td></tr>
+        <tr><td valign="top">No.072  <b><a href="#R11N6">@CallDialog</a></b></td><td>　ダイアログ(ポップアップメッセージ)を出す<br><br><br></td></tr>
+     
+
+
+    </table>
+    
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>使用必須関数</b></td></tr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+    <tr><td>
+    <table>
+        <tr><td><a name="R1N1"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>public void Awake72() ;</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>初期処理</td></tr>
+        <tr><td><b>引数</b></td><td>なし</td></tr>
+        <tr><td><b>戻り値</b></td><td>なし</td></tr>
+        <tr>
+            <td valign="top" width="100"><b>解説</b></td><td>
+            ゲーム開始時に最初に一回だけ通る関数です。<br>
+            なのでここに初期処理を書きましょう。<br>
+            </td>
+        </tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R1N2"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>public void Loop72() ;</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>ゲームループ</td></tr>
+        <tr><td><b>引数</b></td><td>なし</td></tr>
+        <tr><td><b>戻り値</b></td><td>なし</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	メインとなるゲームループです。<br>
+            	ここにゲームのループを書きます<br>
+        </td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R1N3"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>public class Define72{} ;</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>さまざまな定義</td></tr>
+        <tr><td><b>引数</b></td><td>なし</td></tr>
+        <tr><td><b>変数</b></td><td></td></tr>
+ 		<tr><td >　</td><td></td></tr>
+        <tr><td><b>WINDOW_WIDTH<b></td><td>　画面の横幅(単位はpixel)を設定できます。</td></tr>
+        <tr><td ><b>WINDOW_HEIGHT</b></td><td>　画面の縦幅(単位はpixel)を設定できます。</td></tr>
+        <tr><td ><b>DefaultFontSize </b></td><td>　デフォルトのフォントサイズを設定します。</td></tr>
+        <tr><td ><b>DefaultBackColor</b></td><td>　デフォルトの背景色を設定します。</td></tr>
+        <tr><td ><b>PrintfDxColor</b></td><td> 　printfDxで出力される色を設定します</td></tr>
+        <tr><td >DefaultMaxSE</td><td> 　効果音読み込み数の最大数です。特になければ触らないでください</td></tr>
+        <tr><td >MOVE_OVER_RADIOUS</td><td>　移動の判定の際に許可されるニュートラルポジションからの距離です。</td></tr>
+        <tr><td >SCROLL_OVER_RADIOUS</td><td> 　スクロールの判定の際の許可される距離です。</td></tr>
+        <tr><td >DEFAULTSLEEPMILLITIME</td><td> 　毎ループ毎のスリープ時間(ミリ秒)を設定します</td></tr>
+        <tr><td ></td><td>　</td></tr>
+        <tr><td ></td><td></td></tr>
+        <tr><td valign="top" ><b>解説</b></td><td>
+            	Dxlib72は初期化の際にここに定義してあるものを利用します。<br>
+            	WINDOW_WIDTHとWINDOW_HEIGHTのサイズに合うように<br>
+            	自動的に画面は拡大縮小されます。<br><br>
+        </td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>図形描画関数</b></td></tr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R2N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawLine(float _x1, float _y1, float _x2, float _y2,int _color(省略可), int _Thickness(省略可)) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>線を描画します</td></tr>
+            <tr><td><b>戻り値</b></td><td> ０：成功　　－１：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	点(_x1,_y1)から、点(_x2,_y2)まで、_colorで指定した色で、_Thickness　の線の太さで直線を描画します<br>
+                	_colorや_thicknessを省略した場合は、直前に図形を描写したときと同じ色や太さで描画します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R2N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawBox(float _x1, float _y1, float _x2, float _y2, int _color(省略可), boolean _FillFlag(省略可)) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>長方形を描画します</td></tr>
+            <tr><td><b>戻り値</b></td><td> ０：成功　　－１：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	左上の点が(_x1,_y1)、右下の点が(_x2,_y2)の長方形を描画します。<br>
+                	_colorで指定した色で塗ります。_FillFlagは塗りつぶすかどうかを指定します。<br>
+                	_colorや_FillFlagを省略した場合は、直前と同じ色や塗りつぶしになります。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R2N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawCircle(float _x, float _y, float _r,  int _color(省略可), boolean _FillFlag(省略可)) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>円を描画します</td></tr>
+            <tr><td><b>戻り値</b></td><td> ０：成功　　－１：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	点(_x,_y)を中心に半径_rの円を描きます。<br>
+                	_colorで指定した色で塗ります。_FillFlagは塗りつぶすかどうかを指定します。<br>
+                	_colorや_FillFlagを省略した場合は、直前と同じ色や塗りつぶしになります。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R2N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawPixel(float _x, float _y, int _color) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>点を描画します</td></tr>
+            <tr><td><b>戻り値</b></td><td> ０：成功　　－１：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	点(_x,_y)に_colorの色の点を描きます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>グラフィック系の関数</b></td></tr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R3N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int LoadGraphScreen(int _x, int _y, int _read) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>画像を描画します</td></tr>
+            <tr><td><b>戻り値</b></td><td>０：成功　－１：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                画像ファイルをGraphNameの示すパスを元にディスクから読みこんで <br>
+                点( x , y)を画像の左上の頂点とした領域に描画します。<br>
+                引数がint なので、res/drawable-nodpiフォルダにあるリソースidが割り振られているのでそれを使います。<br>
+                互換性のために無効な第4引数が指定できますが、意味はありません。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int LoadGraph(String _FileName)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>描画する画像を読み込む。</td></tr>
+            <tr><td><b>戻り値</b></td><td>－１以外：読み込んだ画像のハンドル</td></tr>
+            <tr><td width="100">　</td><td>－１：読み込み失敗<br><br></td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	DrawGraph等で使用するために画像を読み込みます。<br>
+                	引数がString なので、resフォルダと同階層に作成したassetsフォルダ以下の画像を読み込みます。
+                	どちらのLoadGraphで読み込んでも同じようにDrawGraph等が使えます。<br>
+                	なお、透過色の指定は出来ないため、透過したい場合はPNGに予め透過設定をして使ってください。<br>
+            </td></tr>
+        </table>
+        </td></tr>
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int LoadGraph(int _read)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>描画する画像を読み込む。</td></tr>
+            <tr><td><b>戻り値</b></td><td>－１以外：読み込んだ画像のハンドル</td></tr>
+            <tr><td width="100">　</td><td>－１：読み込み失敗<br><br></td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	DrawGraph等で使用するために画像を読み込みます。<br>
+                	引数がint なので、res/drawable-nodpiフォルダにあるリソースidが割り振られているのでそれを使います。<br>
+                	どちらのLoadGraphで読み込んでも同じようにDrawGraph等が使えます。<br>
+                	なお、透過色の指定は出来ないため、透過したい場合はPNGに予め透過設定をして使ってください。<br>
+            </td></tr>
+        </table>
+        </td></tr>
+</hr></table>
+
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DrawGraph(int _x, int _y, int _Handle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を描画する。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	LoadGraphで読み込んだ画像を描画します。<br>
+                	点(_x ,_y)を画像の左上の頂点とした領域に描画します。。<br>
+                	_Handleには、LoadGraphでの戻り値をしていします。<br>
+                	なお、透過色の指定は出来ないため、透過したい場合はPNGに予め透過設定をして使ってください。<br>
+                	そのため、互換性のために無効な第4引数が指定できますが、意味はありません。<br>
+            </td></tr>
+        </table>
+        </td></tr>
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N5"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawTurnGraph( int x, int y,int _Handle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を左右反転して描画する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像を左右反転してDrawGraphします。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N6"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawExtendGraph(int _x1, int _y1, int _x2, int _y2, int _Handle) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を拡大縮小して描画する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像を拡大縮小してDrawGraphします。<br>
+				具体的には、左上の座標(_x1,_y1)から右下の座標(_x2,_y2)の矩形領域に合うように描画します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N7"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawRotaGraph(int x, int y,double ExtRate, double Angle,int _Handle ,  boolean TurnFlag )  </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を回転して描画する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像を中心を中心にして回転してDrawGraphします。<br>
+				ExtRate倍して、Angle(単位はラジアン)だけ回転して描画します<br>
+				本家のDrawRotaGraphと同様に、_x ,_y は右上の座標ではなく、中心の座標です。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N8"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawRotaGraph2( int x, int y,int cx, int cy,double ExtRate, double Angle,int _Handle,  boolean TurnFlag )  </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を回転の中心を指定して回転して描画する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像を(cx ,cy)を中心にして回転してDrawRotaGraphします。<br>
+			</td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N9"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DrawRotaGraph3( int x, int y, int cx, int cy, double ExtRateX, double ExtRateY, double Angle, int _Handle, boolean TurnFlag ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を回転の中心と拡大比率を指定して描画する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像を横をExtRateX,縦をExtRateY倍拡大してDrawRotaGraph2します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N10"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int GetGraphWidth(int _Handle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像の横幅を取得する</td></tr>
+            <tr><td><b>戻り値</b></td><td>-1以外:画像の横幅　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				読み込んだ画像の横幅を取得します<br>
+				本家のGetGraphSizeでは引数にそのアドレスを書き込ませましたが、
+				AndroidのJavaでは構造的にそれが不可能なので分割して戻り値にて記録させるようにしました。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N11"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int GetGraphHeight(int _Handle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像の縦幅を取得する</td></tr>
+            <tr><td><b>戻り値</b></td><td>-1以外:画像の横幅　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				読み込んだ画像の縦幅を取得します<br>
+				本家のGetGraphSizeでは引数にそのアドレスを書き込ませましたが、
+				AndroidのJavaでは構造的にそれが不可能なので縦と横で分割して戻り値にしました。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N12"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>  int InitGraph()</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像をすべてメモリから削除する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				読み込んだ画像をすべてメモリから削除します<br>
+				アプリを終了するときに自動的にこの関数が呼ばれるようになっています。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N13"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>  int DeleteGraph()</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像を一つ指定してメモリから削除する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				読み込んだ画像をハンドルを指定してメモリから削除します<br>
+				使えるメモリの数は限られているので、画像を沢山読み込んだときは使用するのもよいでしょう。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R3N14"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>  int SetDrawBlendMode( int _BlendMode , int _Pal )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>画像の描画モードを指定します</td></tr>
+            <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				画像の描画モードを指定します。<br>
+				現在二種類が設定できます。<br>
+				DX_BLENDMODE_NOBLEND…標準の描画方法<br>
+				DX_BLENDMODE_ALPHA　…αブレンドで描画します<br>
+				Palはαブレンドでのブレンドの値で、0から255までを指定出来ます。<br>
+				</td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>ドット単位で画像にアクセスしたい関係</b></td></tr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R4N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>class Color72{}</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>Set/GetPixelSoftImageで使うクラスです。</td></tr>
+            <tr><td><b>変数</b></td><td>red,green,blueのRGBと,透過度alphaそれぞれ0～255</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				SetPixelSoftImage、GetPixelSoftImageで使うクラスです。<br>
+				詳しくはそれぞれの関数を参考にしてください<br>
+				</td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R4N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int GetPixel(int _Handle, int _x, int _y) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ画像の指定した位置の色を取得します。</td></tr>
+            <tr><td><b>戻り値</b></td><td>-1:失敗　-1以外:int型でのColor関数で使用される色の値</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+				LoadGraphで読み込んだ画像の、(_x,_y)の位置の色を取得します。<br>
+				</td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R4N3"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int GetPixelSoftImage(int _Handle, int _x, int _y, Color72 _color72)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>読み込んだ画像の指定した位置の色を取得します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>0:成功　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			LoadGraphで読み込んだ画像の、(_x,_y)の位置の色を取得します。<br>
+			GetPixelではColorのintが返されることでそれを利用しますが、こちらは
+			ARGBの要素を持つクラスのColor72を引数として渡し、そこに値が代入されて返されます。<br>
+			javaでは、ポインタが存在しないので、単なるint型の引数の元を関数内で変更することが出来ないので、
+			このような仕様になっています。
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R4N4"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int  SetPixel(int _Handle, int _x, int _y, int _color)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>読み込んだ画像の指定した位置の色を変更します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>0:成功　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			LoadGraphで読み込んだ画像の、(_x,_y)の位置の色を、_colorの色に変更します。<br>
+			ここで使われるint型のColorは、javaに標準で搭載されているColorです。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R4N5"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int  SetPixelSoftImage(int _Handle, int _x, int _y, Color72 _color72)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>読み込んだ画像の指定した位置の色を変更します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>0:成功　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			LoadGraphで読み込んだ画像の、(_x,_y)の位置の色を、の持つRGBAの色に変更します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>文字描画関係関数</b></td></tr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+    <tr><td>
+    <table>
+        <tr><td><a name="R5N1"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int  DrawString(int _x, int _y, String _str, int _color(省略可)) </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字列を描画します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>0:成功　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			座標(_x,_y)から、文字列 _str を_colorの色で描画します。<br>
+			String型を使ったほうが利便性が高いため、<br>
+			DrawFormatStringもDrawStringと統一して、String型のものとして扱うことにしています<br>
+			そのため、どちらも同じ関数となります。<br>
+			%dなどは使えません。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N2"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int  GetDrawFormatStringWidth(String _str)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字列の横幅を取得します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>-1:失敗　-1以外：その長さ</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			文字列描画時の文字列の横幅の長さを取得します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N3"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int SetFontSize(int _FontSize)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字描画時の文字サイズを設定します。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			文字列描画時の文字サイズを _FontSizeに設定します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N4"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int SetFontThickness(int _ThickPal)  </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字描画時の太さを設定します。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			文字列描画時の線の太さを _ThickPalに設定します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N5"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int SetFontAntiAlias(boolean _flag) </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字描画時のアンチエイリアスを設定します。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			文字描画時にアンチエイリアスを使用するかを_flagにて設定します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N5"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int SetFontAntiAlias(boolean _flag) </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>文字描画時のアンチエイリアスを設定します。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			文字描画時にアンチエイリアスを使用するかを_flagにて設定します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N6"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int printfDx(String _str)</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>デバッグ用に使えるprintfDxです。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			普通の文字列は毎ループで書かないと消えてしまいますが、<br>
+			この関数で書いた文字列 _str は消えずに見ることが出来ます。<br>
+			一度だけの値の確認など、さまざまな用途にデバッグ用に使用できます。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R5N7"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>int clsDx()</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>printfDxで描画したものをすべて消します。</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			printfDxで描画した文字列を削除できます。<br>
+			この関数でしか削除できません。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>動画関係関数</b></td></tr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+    <tr><td>
+    <table>
+        <tr><td><a name="R6N1"><b>宣言</b></a></td><td>
+        <font color="#000088"><b> int PlayMovie(String _MovieName)</b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>動画を再生します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>0:成功　　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			_MovieNameで指定した assets/以下にある動画ファイルを読み込んで再生します。
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>入力関係の関数</b></td></tr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+    <tr><td>
+    <table>
+        <tr><td><a name="R7N1"><b>宣言</b></a></td><td>
+        <font color="#000088"><b> int GetTouchPointX() / int GetMousePointX() </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>タッチした位置のX座標を返します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>-1以外:そのX座標　　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			タッチした位置のX座標を返します。<br>
+			 GetTouchPointX()も GetMousePointX()も同じ関数ですが、互換性のために残してあります。
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R7N2"><b>宣言</b></a></td><td>
+        <font color="#000088"><b> int GetTouchPointY() / int GetMousePointY() </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>タッチした位置のY座標を返します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>-1以外:そのY座標　　-1:失敗</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			タッチした位置のY座標を返します。<br>
+			もともとの関数 GetMousePointでは、関数の引数に参照を渡して変更していましたが、<br>
+			それが不可能なので、XとYに分割しました。<br>
+			 GetTouchPointY()も GetMousePointY()も同じ関数ですが、互換性のために残してあります。
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R7N3"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>  boolean Touched() </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>タッチしているかどうかを返します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>true:タッチしている　false:タッチしていない</td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			タッチしているかどうかを返します。。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R7N4"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>  boolean CheckHitKey(int KeyCode) </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>ボタンに対応するジェスチャーが行われているかを返します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>true:している　false:していない</td></tr>
+        <tr><td><b>KeyCodeに入れる値</b></td><td></td></tr>
+ 		<tr><td >　</td><td></td></tr>
+        <tr><td><b> KEY_INPUT_RIGHT <b></td><td>　右に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>KEY_INPUT_DOWN</b></td><td>　下に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>KEY_INPUT_LEFT </b></td><td>　左に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>KEY_INPUT_UP</b></td><td>　上に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>KEY_INPUT_RETURN</b></td><td> 　GESTURE_SHOWPRESSと同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_SPACE</b></td><td> 　GESTURE_DOWNと同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_Z</b></td><td>　GESTURE_SINGLETAPと同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_X</b></td><td> 　GESTURE_DOUBLETAPと同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_C</b></td><td> 　GESTURE_LONGPRESSと同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_BACK</b></td><td> 　GESTURE_LONGPRESS と同様。</td></tr>
+        <tr><td ><b>KEY_INPUT_V</b></td><td> 　GESTURE_UPと同様。</td></tr>        
+        <tr><td ></td><td>　</td></tr>
+        <tr><td ></td><td></td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			Androidには標準ではキーボード操作は出来ないため、<br>
+			対応しそうなタッチ操作またはジェスチャー操作でエミュレートします。<br>
+			GESTURE系エミュレート操作の概要は、CheckGestureにて説明してあります<br>
+			主にゲーム操作で使われる頻度の高そうなボタンのみをエミュレートしてあります。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+    <tr><td><hr>
+    <table>
+        <tr><td><a name="R7N5"><b>宣言</b></a></td><td>
+        <font color="#000088"><b>  boolean CheckGesture(int GestureCode) </b></font><br></td></tr>
+        <tr><td><b>概略</b></td><td>ジェスチャーが行われているかを返します。</td></tr>
+        <tr><td><b>戻り値</b></td><td>true:している　false:していない</td></tr>
+        <tr><td><b>GestureCodeに入れる値</b></td><td></td></tr>
+ 		<tr><td >　</td><td></td></tr>
+        <tr><td><b> MOVE_RIGHT <b></td><td>　右に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>MOVE_DOWN</b></td><td>　下に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>MOVE_LEFT </b></td><td>　左に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>MOVE_UP</b></td><td>　上に移動してる操作っぽい時。</td></tr>
+        <tr><td ><b>GESTURE_SHOWPRESS</b></td><td> 　所謂軽くタッチ！的な操作。</td></tr>
+        <tr><td ><b>GESTURE_DOWN</b></td><td> 　画面に触ったら大抵すぐに呼び出される。</td></tr>
+        <tr><td ><b>GESTURE_SINGLETAP</b></td><td>　所謂ちょんタッチ。</td></tr>
+        <tr><td ><b>GESTURE_DOUBLETAP</b></td><td> 　二回連続でちょんちょんっとタッチ</td></tr>
+        <tr><td ><b>GESTURE_LONGPRESS</b></td><td> 　結構長く押したとき。</td></tr>
+        <tr><td ><b>GESTURE_UP</b></td><td> 　フリック操作でもなく、ロングブレス操作でもなく上げたとき</td></tr>
+        <tr><td ><b>FLING_RIGHT</b></td><td> 　右にシャッって操作した時。所謂フリック操作。</td></tr>   
+        <tr><td ><b>FLING_DOWN</b></td><td> 　下にシャッって操作した時。所謂フリック操作。</td></tr>   
+        <tr><td ><b>FLING_LEFT</b></td><td> 　左にシャッって操作した時。所謂フリック操作。</td></tr>   
+        <tr><td ><b>FLING_UP</b></td><td> 　上にシャッって操作した時。所謂フリック操作。</td></tr>   
+        <tr><td ><b>SCROLL_LEFT</b></td><td> 　右にみょーって操作した時。所謂スクロール操作。</td></tr>   
+        <tr><td ><b>SCROLL_UP</b></td><td> 　上にみょーって操作した時。所謂スクロール操作。</td></tr>   
+        <tr><td ><b>SCROLL_RIGHT</b></td><td> 　右にみょーって操作した時。所謂スクロール操作。</td></tr>   
+        <tr><td ><b>SCROLL_DOWN</b></td><td> 　下にみょーって操作した時。所謂スクロール操作。</td></tr>  
+        <tr><td ></td><td>　</td></tr>
+        <tr><td ></td><td></td></tr>
+        <tr><td valign="top" width="100"><b>解説</b></td><td>
+			GestureCodeに上で指定した値を入れると、その操作をしているかを返します。<br>
+			</td></tr>
+    </table>
+    </td></tr>        
+</hr></table>
+
+   
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>音利用関数</b></td></tr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R8N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int LoadSoundMem( String _FileName , int _PlayType)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>音楽の読み込み</td></tr>
+	   		<tr><td><b> _PlayTypeに入れる値</b></td><td></td></tr>
+	 		<tr><td >　</td><td></td></tr>
+	        <tr><td><b> DX_PLAYTYPE_SE  <b></td><td>　10秒まで程度の効果音を鳴らすとき。</td></tr>
+	        <tr><td ><b>DX_PLAYTYPE_BGM</b></td><td>　ループするBGMを流すとき。</td></tr>
+	        <tr><td ><b>DX_PLAYTYPE_BGM_NOLOOP  </b></td><td>　ループしないBGMを流すとき。</td></tr>
+	        <tr><td ><b>DX_PLAYTYPE_BACK</b></td><td>　DX_PLAYTYPE_SEと同じ。</td></tr>
+			<tr><td ><b>DX_PLAYTYPE_LOOP</b></td><td>　DX_PLAYTYPE_BGMと同じ。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	assetsフォルダ以下にある _FileNameの音楽ファイルを読み込みます。
+            	元々のLoadSoundMemと一つだけ大きく異なるところがあり、<br>
+            	それは、PlayTypeの指定をLoadSoundMemするときに予め決めておくということです。<br>
+                Androidでは、効果音用のとBGM用のとで違う再生方法を使用するからです。<br>
+                DX_PLAYTYPE_SEでは、10秒程度しか鳴らせませんが、数多く同時に鳴らせます。<br>
+                また、遅延が存在しません。<br>
+                DX_PLAYTYPE_BGM,DX_PLAYTYPE_BGM_NOLOOPでは、ストリーミング再生をするので、
+                いくらでも長いBGMでも再生できますが、同時再生数は4程度です。<br>
+                また、開始時などに遅延が発生します。<br>
+                効果音ならDX_PLAYTYPE_SE 、BGMならDX_PLAYTYPE_BGM または DX_PLAYTYPE_BGM_NOLOOPを使用
+                しましょう。<br>
+                追記しておくと、効果音ではSoundPoolを、BGMではMediaPlayerを使っています。<br>
+                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int LoadSoundMem( int _FileName , int _PlayType)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>_FileNameがresフォルダ以下のリソースidが割り当てられているファイルを使用するとき用</td></tr>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+ <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int PlaySoundMem( int _SoundHandle  ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ音楽の再生</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	読み込んだ音楽を再生します。<br>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+ 
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int CheckSoundMem( int _SoundHandle ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ音楽が再生中かを調べます</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：再生中　-1：再生中ではない　-2:効果音だった</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	読み込んだ音楽が再生中かを返却します。<br>
+            	現在効果音として読み込んだファイルは再生中かを返却できません。<br>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+ 
+  
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N5"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int StopSoundMem( int _SoundHandle ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ音楽の再生を一時停止します</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：失敗　-2:効果音だった</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	読み込んだ音楽を一時停止します。<br>
+            	一時停止した場合、PlaySoundMemでリスタートできます<br>
+            	現在効果音として読み込んだファイルは一時停止できません。<br>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N6"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DeleteSoundMem( int _SoundHandle ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ音楽をメモリから解放します。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+			読み込んだ音楽をハンドルを指定してメモリから削除します<br>
+			使えるメモリの数は限られているので、音楽を沢山読み込んだときは使用するのもよいでしょう。              
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N7"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int InitSoundMem(  ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ音楽を全てメモリから解放します。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+			読み込んだ音楽をすべてメモリから削除します<br>
+			ゲーム終了時には自動的にこの関数が呼び出されています。<br>        
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N8"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int ALLStopSoundMem(  ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ再生中の音楽を全て一時停止します。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+			読み込んだ音楽をすべて一時停止します。<br>
+			ホームボタンを押したときには自動的にこの関数が呼び出されています。<br>        
+            </td></tr>
+	    </table>
+    </td></tr>
+</hr></table>
+  <table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R8N9"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int AllResumeSoundMem(  ) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み込んだ一時停止中の全ての音楽を再生しなおします。</td></tr>
+            <tr><td><b>戻り値</b></td><td>0：成功　-1：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+			読み込んだ一時停止中の全ての音楽を再生しなおします。<br>       
+			ホームボタンから戻った時には自動的にこの関数が実行されます<br> 
+            </td></tr>
+	    </table>
+    </td></tr>
+</hr></table>
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>時間関係の関数</b></td></tr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R9N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>long GetNowCount( )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>ミリ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　そのミリ秒の値/td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	ミリ秒単位の精度を持つカウンタの現在値を得ます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R9N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>long GetNowHiPerformanceCount( )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>マイクロ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　そのマイクロ秒の値/td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	マイクロ秒単位の精度を持つカウンタの現在値を得ます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R9N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>long GetNowSuperHiPerformanceCount( )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>ナノ秒単位の精度を持つカウンタの現在値を得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　そのナノ秒の値/td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	ナノ秒単位の精度を持つカウンタの現在値を得ます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R9N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>class DATEDATA(){} </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>日付を扱うクラスです。</td></tr>
+            <tr><td><b>変数</b></td><td>　</td></tr>
+            <tr><td><b>　</b></td><td>Year　：年</td></tr>
+            <tr><td><b>　</b></td><td>Mon　：月</td></tr>
+            <tr><td><b>　</b></td><td>Day　：日</td></tr>
+            <tr><td><b>　</b></td><td>Hour　：時</td></tr>
+            <tr><td><b>　</b></td><td>Min　：分</td></tr>
+            <tr><td><b>　</b></td><td>Sec　：秒</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                日付を扱うクラスです。<br>
+                最初は全て0が値として入っています。
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R9N5"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int GetDateTime( DATEDATA _DateBuf )  </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>現在の時間の情報を得ます。</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                引数として指定したDATEDATAクラスのものに現在の時間の情報を全て代入して更新します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>ファイル読み書き関係</b></td></tr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R10N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int FileRead_open(String _FileName)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>ファイルを読み込む</td></tr>
+            <tr><td><b>戻り値</b></td><td>　-1以外：読み込んだファイルのハンドル　-1：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                ファイルを読み込むために読み取りモードでファイルを開きます。<br>
+                assets/フォルダ以下のファイルを読み込みます。<br>
+                また、Androidの都合上、assets/以下のフォルダは書き込むことが出来ません。<br>
+                読み書き可能なファイルの編集にはDataFile～関数を使ってください。<br>
+                ここで帰ってきたファイルハンドルを以降の読み込み用関数で使います<br>
+                書き込みも読み込みも、UTF-8です。<br>
+                他のだと、文字化けします。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int FileRead_size(String _FileName)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>ファイルのサイズを得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　-１以外：そのファイルサイズ　－１：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                ファイルサイズを取得します。<br>
+                これだけ単独で使用することでサイズを取得できます<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int FileRead_close(int _FileHandle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み取り用で開いたファイルを閉じる</td></tr>
+            <tr><td><b>戻り値</b></td><td>　０：成功　－１：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み取りモードで開いたファイルを閉じます。<br>
+                必ずFileReadOpenなどで開いたファイルは利用が終わったら閉じなければなりません<br>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>boolean FileRead_eof(int _FileHandle )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み取り用で開いたファイルがファイルの終端かを得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　true：終端またはエラー　false：終端ではない</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み取りモードで開いたファイルがファイルの終端かを得ます。<br>       
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N5"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int FileRead_gets(StringBuffer _Buf, int _FileHandle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み取り用で開いたファイルから一行分のデータを得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　0:成功 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み取り用で開いたファイルから一行分のデータを得ます。<br>
+                得たデータは _Bufの引数に指定した引数に代入されます。<br>
+                _BufはStringではなくStringBufferなので、注意してください<br>
+                int fp = FileRead_open("DX72.txt");<br>
+                StringBuffer STR = new StringBuffer();<br>
+                FileRead_gets(STR,fp);<br>
+                String str = STR.toString();<br>
+                printfDx(str);<br>
+                FileRead_close(fp);<br>
+                のように使用します。<br>
+                StringBufferは簡単に言えば書き換えが容易なStringクラスです。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N6"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int FileRead_getc( int _FileHandle )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み取り用で開いたファイルから一文字分のデータを得る</td></tr>
+            <tr><td><b>戻り値</b></td><td>　-1以外：読み込んだ一文字　 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み取り用で開いたファイルから一文字分のデータを得ます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N7"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DataFileRead_open( String _FileName )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能なファイルを読み込みモードで開く</td></tr>
+            <tr><td><b>戻り値</b></td><td>　-1以外：読み込んだファイルのハンドル　 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み書き可能なファイルを読み込みモードで開きます。<br>
+                Androidの専用のデータ用フォルダ中においてのみ読み書き可能です。<br>
+                そこに、DataFileWrite_openで一度開くことによりファイルを作成したのち、この関数で読み取ることが出来ます。
+                int n = DataFileRead_open("DX72.txt");<br>
+                if(-1 == n){//ファイルが無ければ<br>
+                　　n =DataFileWrite_open("DX72.txt");//ファイルが作られる<br>
+                　　DataFileWrite_close(n);<br>
+                　　n = DataFileRead_open("DX72.txt");//開く<br>
+                }<br>
+                /*ここに読み込む処理を書く*/<br>
+                FileRead_close(n);<br>       
+                <br>
+                <br>
+                なお、この関数で開いたファイルはFileRead_openで開いたのと
+                同様に、FileRead_～関数を利用することが出来ます。         
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N8"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DataFileWrite_open( String _FileName )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能なファイルを書き込みモードで開く</td></tr>
+            <tr><td><b>戻り値</b></td><td>　-1以外：読み込んだファイルのハンドル　 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                読み書き可能なファイルを書き込みモードで開きます。<br>
+                Androidの専用のデータ用フォルダ中においてのみ読み書き可能です。<br>
+                もし、ファイルが存在しなければ、新たにそのファイルを作って開きます<br>
+                存在している場合は、追加で書くのではなく、新たに一から書き込みます。
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N9"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DataFileWrite_sets(String _Str, int _FileHandle,boolean _putnewline)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能な書き込みモードで開いたファイルに、文字列を書き込む。</td></tr>
+            <tr><td><b>戻り値</b></td><td>　0:成功　 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                _Strの文字列を読み書き可能な書き込みモードで開いたファイルに、一行書き込みます。<br>
+                書き込みも読み込みも、UTF-8です。<br>
+                _putnewlineがtrueなら、改行を挿入します。<br>
+                falseのときは、改行しません<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N10"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DataFileWrite_setc(Byte _Str, int _FileHandle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能な書き込みモードで開いたファイルに、一文字書き込む。</td></tr>
+            <tr><td><b>戻り値</b></td><td>　0:成功　 -1:失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                _Strの文字列を読み書き可能な書き込みモードで開いたファイルに、一文字書き込みます。<br>
+                Byte型の一文字を書き込みます。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N11"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int DataFileWrite_close(int _FileHandle)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能な書き込みモードで開いたファイルを閉じる</td></tr>
+            <tr><td><b>戻り値</b></td><td>　０：成功　－１：エラー発生</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                書き込みモードで開いたファイルを閉じます。<br>
+                必ずDataFileWrite_openで開いたファイルは利用が終わったら閉じなければなりません<br>                
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N12"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> String DataFileRead(String _FileName) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能なファイルから全部読み込んで、それを返す</td></tr>
+            <tr><td><b>戻り値</b></td><td>　null：失敗　その他：そのファイルの内容</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                 読み書き可能なファイルから一気に全部読み込んで、それを返します。<br>
+                一度に行うので開いたり閉じたりする必要はありません。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R10N13"><b>宣言</b></a></td><td>
+            <font color="#000088"><b> int DataFileWrite(String _str, String _FileName)  </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>読み書き可能なファイルに一気に書き込む。</td></tr>
+            <tr><td><b>戻り値</b></td><td>　0:成功　-1：失敗</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                 _strの文字列を一気に書き込みます。<br>
+                 一度に行うので開いたり閉じたりする必要はありません。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<hr><table align="center" cellspacing="0" cellpadding="0" ><tr><td>
+<b>その他の関数</b></td></tr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" ><hr>
+        <tr><td>
+        <table>
+            <tr><td><a name="R11N1"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>void SetBackgroundColor(int _color) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>背景色の設定</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	　背景色を_colorの色に設定します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R11N2"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int GetColor( int _Red , int _Green , int _Blue ,int _Alpha(省略可)) </b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>int型の色コード取得</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+                	int型の色コードを取得します。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R11N3"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int GetRand( int _RandMax )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>乱数を取得します</td></tr>
+            <tr><td><b>戻り値</b></td><td>０　から　RandMax　で指定した数値のどれかの数値</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            ０　から　RandMax　で指定した数値の乱数を取得します。
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R11N4"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>int SRand( int _Seed )</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>乱数の初期値を設定する</td></tr>
+            <tr><td><b>戻り値</b></td><td>0</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	乱数の初期シードを設定します。<br>
+            	初期値が同じであれば初期値を 設定した後に取得できる乱数は常に同じものとなります。<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R11N5"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>void CallToast(String _str ,boolean _LongFlag)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>トースト(簡単なポップアップ)を出す</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	Android特有の機能であるトースト(簡単なポップアップ)を表示します。<br>
+            	_strの文章でトーストを表示します。<br>
+            	_LongFlagがtrueならば長時間、falseならば短時間表示します。
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+
+<table align="center" width="800" cellspacing="0" cellpadding="0" >
+        <tr><td><hr>
+        <table>
+            <tr><td><a name="R11N6"><b>宣言</b></a></td><td>
+            <font color="#000088"><b>void  CallDialog(String _str,String _Title)</b></font><br></td></tr>
+            <tr><td><b>概略</b></td><td>トダイアログ(ポップアップメッセージ)を出す</td></tr>
+            <tr><td valign="top" width="100"><b>解説</b></td><td>
+            	Android特有の機能であるダイアログ(ポップアップメッセージ)を表示します。<br>
+            	OKボタンが押されるまで表示されるポップアップです。<br>
+            	_Titleのタイトルで、_strの文字列を表示します<br>
+            </td></tr>
+        </table>
+        </td></tr>        
+</hr></table>
+
+    </body>
+</html>
