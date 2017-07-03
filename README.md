@@ -47,10 +47,10 @@
 
 # 初心者向け C++からJavaに書き直すときのヒント
 - 配列
-　- `int enemyx[2];` は `int[] enemyx = new int[2];` のように書きます。使い方は同じ
+  - `int enemyx[2];` は `int[] enemyx = new int[2];` のように書きます。使い方は同じ
 - 多次元配列
-　- `int map[3000][3000];` は `int[][] map = new int[3000][3000]` ;
-　- `Color72 C[9][100][100];` は `Color72[][][] C = new Color72[9][100][100];` のように、自作クラスでも適用可能
+  - `int map[3000][3000];` は `int[][] map = new int[3000][3000]` ;
+  - `Color72 C[9][100][100];` は `Color72[][][] C = new Color72[9][100][100];` のように、自作クラスでも適用可能
 - 色にはColor.BLUEなどを使うと楽.書いた後AndroidStudioならAlt+Enterをすると必要なものをimportしてくれる。
 - static変数を、 final staticでなく使うと危険なので非推奨である。詳しくはググって。
 - クラスは何もしないとき参照渡しと同じように渡せる。
