@@ -1,10 +1,4 @@
-# Dxlib72 メモ
-
-- ver 0.72, Code CHY
-
-
 # 目次
-
 - 初めに
 - システム的な関数関連
 - 言語の違い関連
@@ -12,12 +6,10 @@
 
 
 # 始めに
-
 - Dxlib72は、C++でDxlibを使用していた人が、Android用のゲームを作りたくなった時に、Dxlibを使用していたときと同じ感覚でプログラミングが出来るように作られたライブラリです。
   昨今のアンドロイドブームの中で、Windowsプログラミングだけで終わるのは、もったいない！
 　もしもDxlibと同じようにプログラミング出来たら、便利なのではないか？そう思い、作りました。
   72個の関数を利用できます。
-
 - Dxlib72.java、Define72.java、ForDxLib72Activity.java、Main72.javaの４つのコードからなります
   - 一応説明しますと
   - Dxlib72はDxlib系の関数が入っているSurfaceviewのクラスです。
@@ -27,7 +19,6 @@
   - Define72は画面の大きさなどの定義が入っているクラスです。
   値は自分でカスタムできます。
   - Main72は、Dxlib72を継承した、ユーザーが主に処理を書くためのクラスです。
-
 - 主にMain72に処理を書きましょう。
   - Awake72()の中にゲーム開始時に行う処理を、
   Loop72()の中に毎ゲームループ毎に行う処理を書きます。
@@ -37,17 +28,15 @@
 
 
 # システム的な関数関連
-
 - `SetWindowIconID( int )`
-　- 使用しない。
-　- アイコンを変えるには、AndroidManifest.xmlの、`android:icon="@drawable/ic_launcher"` を変更するか、 ic_launcher.png 自体を変更してください
+  - 使用しない。
+  - アイコンを変えるには、AndroidManifest.xmlの、`android:icon="@drawable/ic_launcher"` を変更するか、 ic_launcher.png 自体を変更してください
 - `SetWindowText( String )`
-　- 使用しない。
-　- ホーム画面で表示される名前を変えるには、`<string name="app_name">Dxlib72</string>` の Dxlib72 を 変更してください。
+  - 使用しない。
+  - ホーム画面で表示される名前を変えるには、`<string name="app_name">Dxlib72</string>` の Dxlib72 を 変更してください。
 
 
 # 言語の違い関連
-
 - 文字列はString のみで、*charをサポートしません。そのため、文字列関連は適宜書き直してください。
 　- 例えば、`DrawFormatString(,,,,"cirno %d", 99)` としていたのが、`DrawFormatString(,,,,"cirno " + 99)` になる感じです。楽でしょ？
 - Javaでは参照渡しが出来ないため、一部の関数を変更しました。
@@ -57,7 +46,6 @@
 
 
 # 初心者向け C++からJavaに書き直すときのヒント
-
 - 配列
 　- `int enemyx[2];` は `int[] enemyx = new int[2];` のように書きます。使い方は同じ
 - 多次元配列
